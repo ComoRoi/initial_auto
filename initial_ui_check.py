@@ -227,28 +227,6 @@ if __name__ == '__main__':
         errCode = 2040
         err.errorReport(targetService, errCode, errConSet[errCode])
 
-    # try :
-    #     ## 고려대 출입증 - 숏컷
-    #     d(text = "신분·출입").click()
-    #     sleep(0.2) #대기
-    #     d(resourceId="com.sktelecom.myinitial:id/txt_shortcut_name", text = "대학 신분증").click()
-    #     d(resourceId="com.sktelecom.myinitial:id/labelTxt", text = "고려대학교").click()
-    #     #d(resourceId="com.sktelecom.myinitial:id/confirmBtn", text="연결하기").click()  ****************
-    #     d(index = "2").click()
-    #     d(resourceId="com.sktelecom.myinitial:id/closeBtn").click()
-    #
-    # except :
-    #     errCode = 2012
-    #     err.errorReport(targetService, errCode, errConSet[errCode])
-
-
-    # try :
-    #     ## proDS 자격증
-    #     d(resourceId="com.sktelecom.myinitial:id/txt_shortcut_name", text = "ProDS 자격증").click()
-    #     d(resourceId="com.sktelecom.myinitial:id/labelTxt", text = "멀티캠퍼스 ProDS").click()
-    #     d(resourceId="com.sktelecom.myinitial:id/confirmBtn", text = "연결하기").click()
-    #       작성중 Cloud SDK 서비스는 연결이 되지 않아 중단함.
-
 
     try :
         #행정안정부 전자문서지갑
