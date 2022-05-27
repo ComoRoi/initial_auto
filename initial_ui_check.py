@@ -3,7 +3,7 @@
 #                  QA AUTOMATION                   #
 #                                                  #
 ####################################################
-
+#https://www.codetd.com/ko/article/11719595
 import uiautomator2 as u2
 import xml.etree.ElementTree as ET
 import time
@@ -17,8 +17,8 @@ import resultCode
 import sys
 import err_handling as err
 
-priConSet = config.KJK_CONFIG
-# priConSet = config.RSI_CONFIG
+#priConSet = config.KJK_CONFIG
+priConSet = config.RSI_CONFIG
 comConSet = config.COMMON_CONFIG
 errConSet = resultCode.ERROR_CODE
 targetService = '[UI TEST] '
@@ -35,7 +35,6 @@ def currentTime():
     global nowDatetime
     nowDatetime = datetime.datetime.now().strftime('[%Y-%m-%d %H:%M:%S] ')
     return nowDatetime
-
 
 # 화면 열기
 d.screen_on()
@@ -56,7 +55,7 @@ if __name__ == '__main__':
 
         pid = d.app_wait(comConSet['app_package'], timeout=3.0) #실행대기
         if not pid:
-            print(currentTime() + targetService + "com.example.android is not running")
+            print(currentTime() + targetService + "initial app is not running")
             assert False, f"{comConSet['app_package']}가 정상적으로 수행되지 않았습니다."
 
         d(resourceId="com.sktelecom.myinitial:id/quitButton").click()
@@ -81,6 +80,16 @@ if __name__ == '__main__':
     except :
         errCode = 1000
         err.errorReport(targetService, errCode, errConSet[errCode])
+
+    try :
+        sleep(1)
+        if d(resourceId="com.sktelecom.myinitial:id/cb_do_not_show_days").exists():  
+            d.xpath('//*[@text="확인"]').click()
+            print("Close the pop-up window.")
+        else :
+            print("There is no pop-up window.")
+    except :
+        print("Pop-up windows error")
 
     try :
         #  고려대 학생증 발급
